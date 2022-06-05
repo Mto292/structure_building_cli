@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:structure_building_cli/screen_builder.dart';
+import 'package:structure_building_cli/structure_building_cli.dart';
 
 Future<void> main(List<String> arguments) async {
   stdout.write('Please enter your screen name:');
