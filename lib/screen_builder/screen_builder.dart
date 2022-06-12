@@ -1,25 +1,46 @@
 import 'dart:io';
+import 'package:structure_building_cli/command/icommand.dart';
 
-class ScreenBuilder {
-  String name;
+class ScreenBuilder extends ICommand {
+  late String screenName;
 
-  ScreenBuilder.create(this.name) {
-    name = name.trim().toLowerCase();
-    createFile(controllerFilePath);
-    createFile(mainViewFilePath);
-    createFile(viewFilePath);
+  @override
+  String get command => 'create screen';
 
-    final mainViewFile = File(mainViewFilePath).openWrite();
-    mainViewFile.write(mainViewFileContent);
-    mainViewFile.close();
+  @override
+  String get errorMessage => throw UnimplementedError();
 
-    final viewFile = File(viewFilePath).openWrite();
-    viewFile.write(viewFileContent);
-    viewFile.close();
+  @override
+  Future<void> execute() async {
+    try {
+      stdout.write('Please enter the screen name:');
+      String? name = stdin.readLineSync();
+      stdout.write(name);
 
-    final controllerFile = File(controllerFilePath).openWrite();
-    controllerFile.write(controllerFileContent);
-    controllerFile.close();
+      while (name == null || name == '') {
+        stdout.write('Please enter the screen name:');
+        name = stdin.readLineSync();
+      }
+
+      screenName = name.trim().toLowerCase();
+      createFile(controllerFilePath);
+      createFile(mainViewFilePath);
+      createFile(viewFilePath);
+
+      final mainViewFile = File(mainViewFilePath).openWrite();
+      mainViewFile.write(mainViewFileContent);
+      mainViewFile.close();
+
+      final viewFile = File(viewFilePath).openWrite();
+      viewFile.write(viewFileContent);
+      viewFile.close();
+
+      final controllerFile = File(controllerFilePath).openWrite();
+      controllerFile.write(controllerFileContent);
+      controllerFile.close();
+    } catch (e) {
+      stdout.addError(e.toString());
+    }
   }
 
   void createFolder(String path) {
@@ -29,8 +50,6 @@ class ScreenBuilder {
   void createFile(String path) {
     File(path).createSync(recursive: true);
   }
-
-  ScreenBuilder(this.name);
 
   /// Paths
 
@@ -46,7 +65,7 @@ class ScreenBuilder {
 
   /// folder name
 
-  String get screenFolderName => '${name}_screen';
+  String get screenFolderName => '${screenName}_screen';
 
   String get viewFolderName => 'view';
 
@@ -54,11 +73,11 @@ class ScreenBuilder {
 
   /// file Name
 
-  String get controllerFileName => '${name}_controller.dart';
+  String get controllerFileName => '${screenName}_controller.dart';
 
-  String get mainViewFileName => '${name}_screen.dart';
+  String get mainViewFileName => '${screenName}_screen.dart';
 
-  String get viewFileName => '$name.dart';
+  String get viewFileName => '$screenName.dart';
 
   /// class Name
 
@@ -66,7 +85,7 @@ class ScreenBuilder {
 
   String get mainViewClassName => '${viewClassName}Screen';
 
-  String get viewClassName => name[0].toUpperCase() + name.substring(1);
+  String get viewClassName => screenName[0].toUpperCase() + screenName.substring(1);
 
   /// Contents
   String get mainViewFileContent => """
