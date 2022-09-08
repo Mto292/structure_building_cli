@@ -26,14 +26,16 @@ class ProjectBuilder extends ICommand {
     stdout.write('unzipping...\n');
     final archive = ZipDecoder().decodeBytes(req.bodyBytes);
     stdout.write('please wait...\n');
-    extractArchiveToDisk(archive, appName);
+    extractArchiveToDisk(archive, Directory.current.path);
+    final baseProjectName = 'flutter_base_project-master';
     String path;
     if (Platform.isMacOS || Platform.isLinux) {
-      path = '$appName/flutter_base_project-master/';
+      path = '$baseProjectName/';
     } else {
-      path = '.\\$appName\\flutter_base_project-master';
+      path = '.\\$baseProjectName';
     }
     await ChangeName(appName,path).execute();
     await ChangeBundleId(bundleId,path).execute();
+    Directory(baseProjectName).rename(appName);
   }
 }

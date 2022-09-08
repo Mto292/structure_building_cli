@@ -13,8 +13,8 @@ class ChangeName extends ICommand {
 
   ChangeName([this.appName, this.path]) {
     if (Platform.isMacOS || Platform.isLinux) {
-      androidManifestPath = '${path ?? ''}android/app/src/main/AndroidManifest.xml';
-      iosInfoPlistPath = '${path ?? ''}ios/Runner/Info.plist';
+      androidManifestPath = '${path ?? ''}/android/app/src/main/AndroidManifest.xml';
+      iosInfoPlistPath = '${path ?? ''}/ios/Runner/Info.plist';
     } else {
       androidManifestPath = '${path ?? '.'}\\android\\app\\src\\main\\AndroidManifest.xml';
       iosInfoPlistPath = '${path ?? '.'}\\ios\\Runner\\Info.plist';
@@ -41,7 +41,7 @@ class ChangeName extends ICommand {
     try {
       List line = readAndSplit(iosInfoPlistPath);
       for (var i = 0; i < line.length; i++) {
-        if (line[i].contains('PRODUCT_BUNDLE_IDENTIFIER')) {
+        if (line[i].contains('CFBundleName')) {
           line[i + 1] = """    <string>$appName</string>""";
           break;
         }

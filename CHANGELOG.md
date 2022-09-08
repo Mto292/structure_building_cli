@@ -1,6 +1,10 @@
-## 1.0.4
+## 1.0.5
 
-- project create cli change.
+- Bug fix.
+
+- ## 1.0.4
+
+- Project create cli change.
 
 ## 1.0.3
 

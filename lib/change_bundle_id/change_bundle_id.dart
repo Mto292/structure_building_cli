@@ -13,8 +13,8 @@ class ChangeBundleId extends ICommand {
 
   ChangeBundleId([this.bundleId, this.path]) {
     if (Platform.isMacOS || Platform.isLinux) {
-      androidAppBuildGradlePath = '${path ?? ''}android/app/build.gradle';
-      iosProjectPbxprojPath = '${path ?? ''}ios/Runner.xcodeproj/project.pbxproj';
+      androidAppBuildGradlePath = '${path ?? ''}/android/app/build.gradle';
+      iosProjectPbxprojPath = '${path ?? ''}/ios/Runner.xcodeproj/project.pbxproj';
     } else {
       androidAppBuildGradlePath = '${path ?? '.'}\\android\\app\\build.gradle';
       iosProjectPbxprojPath = '${path ?? '.'}\\ios\\Runner.xcodeproj\\project.pbxproj';
