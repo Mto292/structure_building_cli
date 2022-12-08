@@ -1,6 +1,5 @@
 import 'dart:io';
-
-import 'package:structure_building_cli/command/icommand.dart';
+import 'package:structure_building_cli/command/base_command/icommand.dart';
 
 class ChangeName extends ICommand {
   String? appName;

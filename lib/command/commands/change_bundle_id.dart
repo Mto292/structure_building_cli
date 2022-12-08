@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'package:structure_building_cli/command/base_command/icommand.dart';
 
-import 'package:structure_building_cli/command/icommand.dart';
 
 class ChangeBundleId extends ICommand {
   String? bundleId;

@@ -1,3 +1,9 @@
+## 1.1.0
+
+- Bug fix.
+- change app name cli added.
+- change bundle id cli added.
+
 ## 1.0.5
 
 - Bug fix.

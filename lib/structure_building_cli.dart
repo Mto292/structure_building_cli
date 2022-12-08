@@ -1,2 +1,4 @@
-export 'screen_builder/screen_builder.dart';
-export 'project_builder/project_builder.dart';
+export 'command/commands/screen_builder.dart';
+export 'command/commands/project_builder.dart';
+export 'command/commands/change_bundle_id.dart';
+export 'command/commands/change_name.dart';

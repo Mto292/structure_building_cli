@@ -1,6 +1,6 @@
 name: structure_building_cli
 description: structure building cli
-version: 1.0.5
+version: 1.1.0
 homepage: https://github.com/Mto292/structure_building_cli.git
 
 environment:
@@ -16,5 +16,5 @@ executables:
   sbcli: structure_building_cli
 
 dev_dependencies:
-  lints: ^2.0.0
-  test: ^1.21.1
+  lints: ^2.0.1
+  test: ^1.22.0
