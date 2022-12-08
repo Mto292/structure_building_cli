@@ -14,7 +14,7 @@ List<ICommand> commandList = [
 String getAllCommandStr() {
   String error = 'You can use one this command:\n';
   for (var element in commandList) {
-    error += '* ${element.command} \n';
+    error += ' ✅ ${element.command} \n';
   }
   return error;
 }

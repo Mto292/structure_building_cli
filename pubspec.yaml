@@ -1,6 +1,6 @@
 name: structure_building_cli
 description: structure building cli
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/Mto292/structure_building_cli.git
 
 environment:

@@ -9,7 +9,7 @@ class AppException implements Exception {
 
   @override
   String toString() {
-    _message ??= 'Error';
+    _message ??= '❌ ❌ ❌ Error ❌ ❌ ❌';
     return _message!;
   }
 }

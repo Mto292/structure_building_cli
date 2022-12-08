@@ -12,8 +12,8 @@ class ChangeName extends ICommand {
 
   ChangeName([this.appName, this.path]) {
     if (Platform.isMacOS || Platform.isLinux) {
-      androidManifestPath = '${path ?? ''}/android/app/src/main/AndroidManifest.xml';
-      iosInfoPlistPath = '${path ?? ''}/ios/Runner/Info.plist';
+      androidManifestPath = '${path ?? ''}android/app/src/main/AndroidManifest.xml';
+      iosInfoPlistPath = '${path ?? ''}ios/Runner/Info.plist';
     } else {
       androidManifestPath = '${path ?? '.'}\\android\\app\\src\\main\\AndroidManifest.xml';
       iosInfoPlistPath = '${path ?? '.'}\\ios\\Runner\\Info.plist';

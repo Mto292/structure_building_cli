@@ -1,3 +1,7 @@
+## 1.1.2
+
+- ChangeName and ChangeBundleId commands bug fix.
+
 ## 1.1.0
 
 - Bug fix.
