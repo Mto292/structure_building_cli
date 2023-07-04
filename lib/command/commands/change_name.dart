@@ -54,10 +54,10 @@ class ChangeName extends ICommand {
 
   void changeAndroidName() {
     try {
-      List line = readAndSplit(androidManifestPath);
+      final line = readAndSplit(androidManifestPath);
       for (var i = 0; i < line.length; i++) {
         if (line[i].contains('android:label=')) {
-          line[i] = """        android:label="$appName" """;
+          line[i] = line[i].replaceFirst(RegExp(r'"([^"]*)"'), '"$appName"');
           break;
         }
       }

@@ -5,15 +5,17 @@ class PathsConst {
     String name = screenName[0].toUpperCase() + screenName.substring(1);
     for (int i = 0; i < name.length; i++) {
       if (name[i] == '_' && i < name.length - 1) {
-        name =
-            name.substring(0, i) + name[i + 1].toUpperCase() + name.substring(i + 2);
+        name = name.substring(0, i) +
+            name[i + 1].toUpperCase() +
+            name.substring(i + 2);
       }
     }
     _viewClassName = name;
   }
 
   /// Paths
-  String get controllerFilePath => '$screenFolderName/$controllerFolderName/$controllerFileName';
+  String get controllerFilePath =>
+      '$screenFolderName/$controllerFolderName/$controllerFileName';
 
   String get mainViewFilePath => '$screenFolderName/$mainViewFileName';
 

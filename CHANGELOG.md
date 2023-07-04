@@ -1,3 +1,7 @@
+## 1.1.2
+
+- ChangeName commands bug fix.
+
 ## 1.1.1
 
 - ChangeName and ChangeBundleId commands bug fix.
@@ -12,7 +16,7 @@
 
 - Bug fix.
 
-- ## 1.0.4
+## 1.0.4
 
 - Project create cli change.
 
