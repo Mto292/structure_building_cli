@@ -56,10 +56,16 @@ class ChangeBundleId extends ICommand {
     try {
       List line = readAndSplit(androidAppBuildGradlePath);
       for (var i = 0; i < line.length; i++) {
-        if (line[i].contains('applicationId')) {
+        bool namespace = false;
+        bool applicationId = false;
+        if (line[i].contains('namespace')) {
+          line[i] = """    namespace "$bundleId" """;
+          namespace = true;
+        } else if (line[i].contains('applicationId')) {
           line[i] = """        applicationId "$bundleId" """;
-          break;
+          applicationId = true;
         }
+        if (namespace && applicationId) break;
       }
       File(androidAppBuildGradlePath).writeAsStringSync(line.join('\n'));
     } catch (e) {

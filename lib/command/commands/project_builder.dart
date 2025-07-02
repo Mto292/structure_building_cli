@@ -25,7 +25,7 @@ class ProjectBuilder extends ICommand {
     print('unzipping...\n');
     final archive = ZipDecoder().decodeBytes(req.bodyBytes);
     print('please wait...\n');
-    extractArchiveToDisk(archive, Directory.current.path);
+    await extractArchiveToDisk(archive, Directory.current.path);
     String path;
     if (Platform.isMacOS || Platform.isLinux) {
       path = '$baseProjectName/';
@@ -34,6 +34,17 @@ class ProjectBuilder extends ICommand {
     }
     await ChangeName(appName, path).execute();
     await ChangeBundleId(bundleId, path).execute();
-    await Directory(baseProjectName).rename(appName);
+    await renameDirectory(baseProjectName, appName);
+  }
+
+  Future<void> renameDirectory(String from, String to) async {
+    final fromDir = Directory(from);
+    final toDir = Directory(to);
+
+    if (await toDir.exists()) {
+      await toDir.delete(recursive: true);
+    }
+
+    await fromDir.rename(to);
   }
 }
